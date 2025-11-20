@@ -1,7 +1,7 @@
 <!-- Author: Alberto Gonzalez -->
 <!-- File Name: index.html -->
 <!-- Date Created: October 28, 2025 -->
-<!-- Date Last Edited: October 29, 2025 -->
+<!-- Date Last Edited: November 20, 2025 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,10 +40,16 @@
     };
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- <link rel="stylesheet" href="assets/css/styles.css" /> -->
+  <link rel="stylesheet" href="assets/css/styles.base.css" />
+  <link rel="stylesheet" href="assets/css/styles.fx.css" />
+
 </head>
 
-<body class="bg-coal text-slate-100 antialiased selection:bg-ember-600/30">
+<body class="antialiased">
+  <!-- Forge particles layer (embers + smoke) -->
+  <div id="forgeParticles" class="forge-particles"></div>
+
   <!-- Header -->
   <header class="site-header">
     <div class="container">
@@ -75,204 +81,402 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="container grid lg:grid-cols-2 gap-10 items-center">
-      <div>
-        <p class="badge"><span class="dot"></span> Veteran-owned • Texas</p>
-        <h1 class="title">Hand-forged <span class="accent text-ember-500">websites</span> that load fast and look sharp</h1>
-        <p class="lead">I craft secure, responsive sites for small businesses and creators—then keep them running with simple maintenance plans.</p>
-        <div class="actions">
-          <a href="#pricing" class="btn-primary">View packages</a>
-          <a href="#work" class="btn-outline">See work</a>
+  <!-- Page transition root -->
+  <main id="pageRoot">
+
+    <!-- Hero -->
+    <section id="home" class="hero hero-forge-texture relative py-20 reveal glow-section">
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="container flex flex-col items-center gap-12 text-center">
+
+        <!-- TOP: Welcome Card -->
+        <div class="relative w-full max-w-3xl rounded-3xl border border-white/10 bg-black/30 backdrop-blur-xl p-10 shadow-[0_0_50px_rgba(0,0,0,0.4)]">
+
+          <!-- Animated glow behind logo -->
+          <div class="absolute left-1/2 top-8 -translate-x-1/2 -z-10 w-48 h-48 bg-ember-500/20 blur-3xl rounded-full animate-pulse-slow"></div>
+
+          <!-- BIGGER LOGO -->
+          <img
+            src="images/logo.png"
+            alt="Digital Forge Solutions logo"
+            class="mx-auto mb-6 h-32 w-auto md:h-40 drop-shadow-[0_0_25px_rgba(249,115,22,0.3)]"
+          />
+
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Welcome to the Forge</h2>
+
+          <p class="text-slate-300 text-lg md:text-xl mb-6">
+            Custom-crafted websites built for performance and reliability.
+          </p>
+
+          <ul class="space-y-3 text-slate-200 text-lg">
+            <li>⚙️ Lightweight, modern stacks</li>
+            <li>🚀 Fast loads on mobile & desktop</li>
+            <li>💼 Transparent pricing & care plans</li>
+          </ul>
         </div>
-        <dl class="stats">
-          <div><dt>Core Web Vitals</dt><dd>Green targets</dd></div>
-          <div><dt>Hosting</dt><dd>Cloudflare Pages</dd></div>
-          <div><dt>Turnaround</dt><dd>As scoped</dd></div>
-        </dl>
-      </div>
-      <div class="preview">
-        <div class="preview-card">
-          <div class="preview-inner">
-            <img src="images/logo.png" alt="Digital Forge Solutions logo preview" class="mx-auto mb-4 h-16 w-auto opacity-90" />
-            <h3 class="text-xl font-semibold">Welcome to the Forge</h3>
-            <p class="mt-2 text-slate-300">Custom-crafted websites built for performance and reliability.</p>
+
+        <!-- Main headline section (centered) -->
+        <div class="max-w-4xl mx-auto space-y-8">
+          <p class="badge mx-auto">
+            <span class="dot"></span> Veteran-owned • Texas
+          </p>
+
+          <h1 class="title leading-tight text-center">
+            Hand-forged <span class="accent text-ember-500">websites</span> that load fast and look sharp
+          </h1>
+
+          <p class="lead text-center max-w-2xl mx-auto">
+            I craft secure, responsive sites for small businesses and creators—
+            then keep them running with simple maintenance plans.
+          </p>
+
+          <div class="actions justify-center">
+            <a href="#pricing" class="btn-primary">View packages</a>
+            <a href="#work" class="btn-outline">See work</a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Services -->
-  <section id="services" class="section alt">
-    <div class="container">
-      <h2 class="section-title text-ember-500">Services</h2>
-      <p class="section-sub">Everything you need to launch, grow, and maintain your online presence.</p>
-
-      <div class="cards grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <article class="card">
-          <h3>Web Design & Development</h3>
-          <p>Modern, responsive sites with SEO-ready structure and fast performance.</p>
-          <ul>
-            <li>Landing pages & multi-page sites</li>
-            <li>Blogs, portfolios, business sites</li>
-            <li>Accessibility best practices</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Care & Maintenance</h3>
-          <p>Keep your site updated, secure, and backed up with monthly plans.</p>
-          <ul>
-            <li>Content updates (bulletins, promos)</li>
-            <li>Monitoring & backups</li>
-            <li>Performance checks</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Branding & SEO</h3>
-          <p>Simple brand kits and on-page SEO to help customers find you.</p>
-          <ul>
-            <li>Logo concepts & color systems</li>
-            <li>Keyword & metadata setup</li>
-            <li>Analytics basics</li>
-          </ul>
-          <details class="seo-details">
-            <summary>🔍 What is SEO?</summary>
-            <div class="seo-explainer">
-              <p><strong>SEO</strong> means <em>Search Engine Optimization</em> — tuning your website so Google and others show it to the right audience.</p>
-              <ul>
-                <li>Fast loading and mobile-first</li>
-                <li>Proper headers and alt text</li>
-                <li>Smart use of keywords</li>
-              </ul>
+          <!-- Stats row centered -->
+          <dl class="mt-6 grid gap-4 sm:grid-cols-3 max-w-3xl mx-auto">
+            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 shadow">
+              <dt class="text-xs uppercase tracking-wide text-slate-400">Core Web Vitals</dt>
+              <dd class="text-sm font-semibold">Green targets</dd>
             </div>
-          </details>
-        </article>
+            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 shadow">
+              <dt class="text-xs uppercase tracking-wide text-slate-400">Hosting</dt>
+              <dd class="text-sm font-semibold">Cloudflare Pages</dd>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 shadow">
+              <dt class="text-xs uppercase tracking-wide text-slate-400">Turnaround</dt>
+              <dd class="text-sm font-semibold">As scoped</dd>
+            </div>
+          </dl>
+        </div>
 
-        <article class="card">
-          <h3>Consulting</h3>
-          <p>Stack choices, hosting, and workflow guidance tailored to your goals.</p>
-          <ul>
-            <li>Tooling & CMS recommendations</li>
-            <li>Cost-saving audits</li>
-            <li>Migration plans</li>
-          </ul>
-        </article>
       </div>
+    </section>
 
-      <p class="coming-soon mt-4">
-        🛠️ <strong>Coming soon:</strong> E-commerce & payments, 3D printing & prototyping.
-      </p>
-    </div>
-  </section>
+    <!-- Services -->
+    <section id="services" class="section alt reveal glow-section">
+      <div class="container">
+        <h2 class="section-title text-ember-500">Services</h2>
+        <p class="section-sub">
+          Everything you need to launch, grow, and maintain your online presence.
+        </p>
 
-  <!-- Pricing -->
-  <section id="pricing" class="section">
-    <div class="container">
-      <h2 class="section-title text-center text-ember-500">Transparent pricing</h2>
-      <p class="section-sub text-center">Pick a starter package—then we tailor it to your exact scope.</p>
-      <div class="grid gap-6 lg:grid-cols-3 mt-8">
-        <article class="card">
-          <h3>Starter</h3>
-          <p class="muted">Single page or 3-section landing site.</p>
-          <p class="price text-ember-500">$699</p>
-          <ul>
-            <li>Custom design & copy polish</li>
-            <li>Mobile-first & accessible</li>
-            <li>Domain, SSL, analytics setup</li>
-          </ul>
-          <a href="#contact" class="btn-outline w-full">Choose Starter</a>
-        </article>
-        <article class="card ring-1 ring-ember-500/20">
-          <div class="chip">Popular</div>
-          <h3>Growth</h3>
-          <p class="muted">Multi-page site with CMS or blog.</p>
-          <p class="price text-ember-500">$1,499</p>
-          <ul>
-            <li>5–7 pages + contact form</li>
-            <li>Starter SEO & schema</li>
-            <li>2 weeks of updates</li>
-          </ul>
-          <a href="#contact" class="btn-primary w-full">Choose Growth</a>
-        </article>
-        <article class="card">
-          <h3>Pro</h3>
-          <p class="muted">Custom features & integrations.</p>
-          <p class="price text-ember-500">Custom</p>
-          <ul>
-            <li>Advanced UI/UX & animations</li>
-            <li>Integrations & automations</li>
-            <li>Ongoing optimization</li>
-          </ul>
-          <a href="#contact" class="btn-outline w-full">Request Quote</a>
-        </article>
+        <div class="cards">
+          <article class="card">
+            <h3>Web Design &amp; Development</h3>
+            <p>Modern, responsive sites with SEO-ready structure and fast performance.</p>
+            <ul>
+              <li>Landing pages &amp; multi-page sites</li>
+              <li>Blogs, portfolios, business sites</li>
+              <li>Accessibility best practices</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Care &amp; Maintenance</h3>
+            <p>Keep your site updated, secure, and backed up with monthly plans.</p>
+            <ul>
+              <li>Content updates (bulletins, promos)</li>
+              <li>Monitoring &amp; backups</li>
+              <li>Performance checks</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Branding &amp; SEO</h3>
+            <p>Simple brand kits and on-page SEO to help customers find you.</p>
+            <ul>
+              <li>Logo concepts &amp; color systems</li>
+              <li>Keyword &amp; metadata setup</li>
+              <li>Analytics basics</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Consulting</h3>
+            <p>Stack choices, hosting, and workflow guidance tailored to your goals.</p>
+            <ul>
+              <li>Tooling &amp; CMS recommendations</li>
+              <li>Cost-saving audits</li>
+              <li>Migration plans</li>
+            </ul>
+          </article>
+        </div>
       </div>
-      <p class="note text-center">Prices shown are example starting points—use your actual rates when you’re ready.</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Work -->
-  <section id="work" class="section alt">
-    <div class="container">
-      <h2 class="section-title text-ember-500">Selected work</h2>
-      <p class="section-sub">Replace these with screenshots of client sites or prototypes.</p>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
-        <article class="card overflow-hidden">
-          <div class="thumb"><span>Client Site — Screenshot</span></div>
-          <div class="p-5">
-            <h3 class="font-semibold text-ember-500">Performance-Focused Redesign</h3>
-            <p class="muted">Improved loading, CMS, and accessibility.</p>
-          </div>
-        </article>
-        <article class="card overflow-hidden">
-          <div class="thumb"><span>Local Business — Screenshot</span></div>
-          <div class="p-5">
-            <h3 class="font-semibold text-ember-500">Service Site</h3>
-            <p class="muted">Clean layout, clear CTAs, easy updates.</p>
-          </div>
-        </article>
-        <article class="card overflow-hidden">
-          <div class="thumb"><span>Portfolio — Screenshot</span></div>
-          <div class="p-5">
-            <h3 class="font-semibold text-ember-500">Creator Portfolio</h3>
-            <p class="muted">Fast gallery and simple publishing flow.</p>
-          </div>
-        </article>
+    <!-- Pricing (with dropdowns) -->
+    <section id="pricing" class="section band-coal reveal glow-section">
+      <div class="container">
+        <h2 class="section-title text-center">Transparent pricing</h2>
+        <p class="section-sub text-center">
+          Pick a starter package—then we tailor it to your exact scope.
+        </p>
+
+        <div class="cards">
+          <!-- Starter -->
+          <article class="card">
+            <h3>Starter</h3>
+            <p class="muted">Single page or 3-section landing site.</p>
+            <p class="price">$699</p>
+
+            <ul>
+              <li>Custom design &amp; copy polish</li>
+              <li>Mobile-first &amp; accessible</li>
+              <li>Domain, SSL, analytics setup</li>
+            </ul>
+
+            <!-- Dropdown: examples -->
+            <details class="plan-dropdown">
+              <summary>Examples of what’s included</summary>
+              <ul>
+                <li>Hero section with clear headline &amp; CTA</li>
+                <li>Services / “What you do” section</li>
+                <li>About or social proof section</li>
+                <li>Simple scroll-to-contact section</li>
+              </ul>
+            </details>
+
+            <!-- Dropdown: best for -->
+            <details class="plan-dropdown">
+              <summary>Best for</summary>
+              <ul>
+                <li>Local trades &amp; service businesses</li>
+                <li>Freelancers and solo founders</li>
+                <li>Event / promo landing pages</li>
+              </ul>
+            </details>
+
+            <div class="mt-5">
+              <a href="#contact" class="btn-outline w-full">Choose Starter</a>
+            </div>
+          </article>
+
+          <!-- Growth (featured) -->
+          <article class="card featured">
+            <div class="flex items-center justify-between gap-3 mb-1">
+              <h3>Growth</h3>
+              <span class="chip">Popular</span>
+            </div>
+            <p class="muted">Multi-page site with CMS or blog.</p>
+            <p class="price">$1,499</p>
+
+            <ul>
+              <li>5–7 pages + contact form</li>
+              <li>Starter SEO &amp; schema setup</li>
+              <li>2 weeks of post-launch updates</li>
+            </ul>
+
+            <!-- Dropdown: page examples -->
+            <details class="plan-dropdown">
+              <summary>Example page lineup</summary>
+              <ul>
+                <li>Home</li>
+                <li>Services / Pricing</li>
+                <li>About / Team</li>
+                <li>Portfolio / Gallery</li>
+                <li>Blog or Resources</li>
+                <li>Contact page with form</li>
+              </ul>
+            </details>
+
+            <!-- Dropdown: CMS & extras -->
+            <details class="plan-dropdown">
+              <summary>What the CMS can manage</summary>
+              <ul>
+                <li>Blog posts or news updates</li>
+                <li>Service items &amp; pricing tables</li>
+                <li>Testimonials &amp; portfolio projects</li>
+                <li>Basic on-page SEO fields</li>
+              </ul>
+            </details>
+
+            <div class="mt-5">
+              <a href="#contact" class="btn-primary w-full">Choose Growth</a>
+            </div>
+          </article>
+
+          <!-- Custom -->
+          <article class="card">
+            <h3>Custom</h3>
+            <p class="muted">Custom features &amp; integrations.</p>
+            <p class="price">Custom</p>
+
+            <ul>
+              <li>Advanced UI/UX &amp; animations</li>
+              <li>Integrations &amp; automations</li>
+              <li>Ongoing optimization &amp; support</li>
+            </ul>
+
+            <!-- Dropdown: example projects -->
+            <details class="plan-dropdown">
+              <summary>Example custom builds</summary>
+              <ul>
+                <li>Membership / client portal</li>
+                <li>Booking or scheduling systems</li>
+                <li>E-commerce storefronts</li>
+                <li>Dashboards &amp; custom admin tools</li>
+              </ul>
+            </details>
+
+            <!-- Dropdown: integrations -->
+            <details class="plan-dropdown">
+              <summary>Integrations I can help set up</summary>
+              <ul>
+                <li>Payment processors (Stripe, Square, etc.)</li>
+                <li>Email marketing tools (Mailchimp, ConvertKit, etc.)</li>
+                <li>CRMs and lead capture tools</li>
+                <li>Custom APIs &amp; webhooks (as needed)</li>
+              </ul>
+            </details>
+
+            <div class="mt-5">
+              <a href="#contact" class="btn-outline w-full">Request Quote</a>
+            </div>
+          </article>
+
+          <!-- Maintenance – part of grid -->
+          <article class="card">
+            <h3>Maintenance – Basic Care</h3>
+            <p class="muted">Keep your site updated, secure, and looking fresh.</p>
+            <p class="price">$149/mo</p>
+
+            <ul>
+              <li>Up to <strong>2 hours</strong> of monthly updates</li>
+              <li>Promo, sales, or seasonal content changes</li>
+              <li>Monthly check of forms, links, and performance</li>
+              <li>Basic backups &amp; uptime monitoring (when supported)</li>
+            </ul>
+
+            <!-- Dropdown: monthly plan details -->
+            <details class="plan-dropdown">
+              <summary>What’s included each month</summary>
+              <ul>
+                <li>Swapping hero images / banners for new promotions</li>
+                <li>Updating text, pricing, or business info</li>
+                <li>Fixing layout issues or broken elements</li>
+                <li>Light SEO touch-ups (titles, alt text, metadata)</li>
+              </ul>
+            </details>
+
+            <!-- Dropdown: additional notes -->
+            <details class="plan-dropdown">
+              <summary>Optional add-ons</summary>
+              <ul>
+                <li>Extra hours billed at $100/hr</li>
+                <li>Advanced redesign or new pages quoted separately</li>
+                <li>E-commerce or membership updates available on request</li>
+              </ul>
+            </details>
+
+            <div class="mt-5">
+              <a href="#contact" class="btn-primary w-full">Start Monthly Care</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="note text-center">
+          Prices shown are example starting points—your actual rates adjust based on scope.
+        </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title text-center text-ember-500">Let’s build it</h2>
-      <p class="section-sub text-center">Tell me about your project and how to reach you. This form opens your email app.</p>
-      <form id="mailtoForm" class="form">
-        <div class="grid sm:grid-cols-2 gap-4">
+    <!-- Work -->
+    <section id="work" class="section alt reveal glow-section">
+      <div class="container">
+        <h2 class="section-title text-ember-500">Selected Work</h2>
+
+        <p class="section-sub">
+          Websites and prototypes designed and developed by Digital Forge Solutions — including the site you're viewing now.
+        </p>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+
+          <!-- REAL PROJECT (GitHub Pages version) -->
+          <article class="card overflow-hidden">
+            <a href="https://agonz1224.github.io/Bevil-s-Custom/index.html" target="_blank" rel="noopener">
+              <img 
+                src="images/caleb-bevil-site.png" 
+                alt="Website prototype for Bevil's Custom Fabrication created by Digital Forge Solutions" 
+                class="w-full h-48 object-cover"
+              />
+            </a>
+            <div class="p-5">
+              <h3 class="font-semibold text-ember-500">Bevil’s Custom Fabrication</h3>
+              <p class="muted">
+                Designed and developed by Digital Forge Solutions.  
+                Currently hosted on GitHub Pages until the client finalizes a domain.
+              </p>
+            </div>
+          </article>
+
+          <!-- COMING SOON PROJECT CARD #1 -->
+          <article class="card overflow-hidden opacity-75">
+            <div 
+              class="flex items-center justify-center bg-ink h-48 text-slate-400 text-lg tracking-wide"
+            >
+              🛠️ Coming Soon
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-ember-500">Project in Progress</h3>
+              <p class="muted">A new client build currently being forged.</p>
+            </div>
+          </article>
+
+          <!-- COMING SOON PROJECT CARD #2 -->
+          <article class="card overflow-hidden opacity-75">
+            <div 
+              class="flex items-center justify-center bg-ink h-48 text-slate-400 text-lg tracking-wide"
+            >
+              🔥 More Work Coming
+            </div>
+            <div class="p-5">
+              <h3 class="font-semibold text-ember-500">Upcoming Build</h3>
+              <p class="muted">Another project will be added to the forge soon.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section reveal glow-section">
+      <div class="container">
+        <h2 class="section-title text-center text-ember-500">Let’s build it</h2>
+        <p class="section-sub text-center">Tell me about your project and how to reach you. This form opens your email app.</p>
+        <form id="mailtoForm" class="form">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="name">Your name</label>
+              <input id="name" name="name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+          </div>
           <div>
-            <label for="name">Your name</label>
-            <input id="name" name="name" required />
+            <label for="message">Project details</label>
+            <textarea id="message" name="message" rows="6" required placeholder="What do you need? Timeline? Budget range?"></textarea>
           </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
+          <div class="form-actions">
+            <p class="hint">
+              Or email directly:
+              <a class="underline hover:text-ember-400" href="mailto:inquiries@digitalforgesolutions.net">
+                inquiries@digitalforgesolutions.net
+              </a>
+            </p>
+            <button type="submit" class="btn-primary">Send</button>
           </div>
-        </div>
-        <div>
-          <label for="message">Project details</label>
-          <textarea id="message" name="message" rows="6" required placeholder="What do you need? Timeline? Budget range?"></textarea>
-        </div>
-        <div class="form-actions">
-          <p class="hint">Or email directly: <a class="underline hover:text-ember-400" href="mailto:inquiries@digitalforgesolutions.net">inquiries@digitalforgesolutions.net</a></p>
-          <button type="submit" class="btn-primary">Send</button>
-        </div>
-      </form>
-    </div>
-  </section>
+        </form>
+      </div>
+    </section>
+
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">

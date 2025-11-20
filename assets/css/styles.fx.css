@@ -1,0 +1,105 @@
+/* Author: Alberto Gonzalez */
+/* File Name: styles.fx.css */
+/* Date Created: November 20, 2025 */
+
+/* ===== Forge particles: pixel embers + soft smoke ===== */
+
+.forge-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1; /* above body background but behind content */
+    overflow: hidden;
+  }
+  
+  /* Base for all particles */
+  .ember-particle,
+  .smoke-particle {
+    position: absolute;
+    will-change: transform, opacity;
+  }
+  
+  /* Tiny pixel embers */
+  .ember-particle {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--forge-500);
+    box-shadow:
+      0 0 6px rgba(249,115,22,0.9),
+      0 0 14px rgba(249,115,22,0.55);
+    opacity: 0;
+    animation-name: emberFloat;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  
+  /* Soft smoke blobs */
+  .smoke-particle {
+    width: 80px;
+    height: 80px;
+    border-radius: 999px;
+    background: radial-gradient(circle,
+      rgba(148,163,184,0.25) 0,
+      rgba(15,23,42,0) 65%);
+    filter: blur(6px);
+    opacity: 0;
+    animation-name: smokeDrift;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+  }
+  
+  /* Embers: rise & drift a bit */
+  @keyframes emberFloat {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    70% {
+      transform: translate3d(
+        var(--drift-x, 0px),
+        var(--rise-mid, -40vh),
+        0
+      ) scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(
+        var(--drift-x, 0px),
+        var(--rise-y, -80vh),
+        0
+      ) scale(0.7);
+      opacity: 0;
+    }
+  }
+  
+  /* Smoke: slow, subtle upward drift */
+  @keyframes smokeDrift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(0.8);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.25;
+    }
+    70% {
+      transform: translate3d(
+        var(--smoke-drift-x, 10px),
+        var(--smoke-rise-mid, -25vh),
+        0
+      ) scale(1.1);
+      opacity: 0.22;
+    }
+    100% {
+      transform: translate3d(
+        var(--smoke-drift-x, 20px),
+        var(--smoke-rise-y, -45vh),
+        0
+      ) scale(1.2);
+      opacity: 0;
+    }
+  }
+  
