@@ -20,65 +20,45 @@ html {
   min-height: 100%;
 }
 
-/* ===== Global Background: forge gradient + metal texture (mobile-safe) ===== */
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: var(--white);
   min-height: 100vh;
   position: relative;
-  background-color: #050508;
+  background: #050508; /* fallback */
   overflow-x: hidden;
 }
 
-/* Layer 1: Metal texture */
+/* ===== Global Background: unified fixed layer for ALL devices =====
+   This avoids iOS "background-attachment: fixed" issues and keeps
+   the metal texture consistent everywhere.
+*/
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("/images/texture-metal.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.35;                 /* Desktop default */
-  filter: brightness(1.10) contrast(1.15);
   pointer-events: none;
-  z-index: -3;
-  transform: translateZ(0);
-}
+  z-index: -2; /* behind particles (-1) and all content */
 
-/* Layer 2: Forge glow overlays */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
+  background-color: #050508;
   background-image:
+    url("/images/texture-metal.png"),
     radial-gradient(circle at 0% 0%, rgba(249,115,22,0.22), transparent 55%),
     radial-gradient(circle at 100% 0%, rgba(251,146,60,0.16), transparent 55%),
     radial-gradient(circle at 0% 100%, rgba(15,23,42,0.9), transparent 55%),
     radial-gradient(circle at 100% 100%, rgba(15,23,42,1), transparent 55%);
+
+  background-size: cover, auto, auto, auto, auto;
   background-repeat: no-repeat;
   background-position: center;
-  pointer-events: none;
-  z-index: -2;
+
+  /* Tone control: consistent across devices */
+  opacity: 1;
+  filter: brightness(1.08) contrast(1.12);
+
+  /* Helps prevent iOS paint glitches */
   transform: translateZ(0);
-}
-
-/* ===== Mobile fixes =====
-   iOS Safari struggles with multiple fixed backgrounds + images.
-   Instead of removing the effect, we make it render reliably by:
-   - switching pseudo-layers to absolute (scrolls with content)
-   - boosting texture visibility slightly (mobile screens crush dark detail)
-*/
-@media (max-width: 768px) {
-  body::before,
-  body::after {
-    position: absolute; /* <-- key fix for iOS */
-  }
-
-  body::before {
-    opacity: 0.50;                 /* stronger texture on phones */
-    filter: brightness(1.22) contrast(1.32);
-  }
+  will-change: transform;
 }
 
 /* ===== Layout ===== */
@@ -261,6 +241,7 @@ body::after {
   position: relative;
   z-index: 0;
 }
+ 赤
 .glow-section::before {
   content: "";
   position: absolute;
